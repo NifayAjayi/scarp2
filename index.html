@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Late Girlfriend's Day!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ffe6f2, #ffb3d9);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff66b2;
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.2em;
+        }
+        .images {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        img {
+            max-width: 200px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        .heart {
+            font-size: 2em;
+            color: #ff4d88;
+            animation: float 3s ease-in-out infinite;
+            margin: 0 10px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Late Girlfriend's Day!</h1>
+        <p>When it was Girlfriend's Day, we were talking but not together yet.</p>
+        <p>Now that we are, I want to celebrate you every day!</p>
+        <p><span class="heart">❤️</span> You're amazing! <span class="heart">❤️</span></p>
+        <div class="images">
+            <img src="https://media.tenor.com/Ql7GsS6mf9cAAAAC/flying-kisses-dave-the-minion.gif" alt="Blushing Minion">
+            <img src="https://i.pinimg.com/originals/29/c7/3f/29c73f4879f4d5e3345311329f90c4e8.jpg" alt="Flower Minion">
+        </div>
+        <div class="footer">
+            <p>Last edited: August 10, 2024</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const hearts = document.querySelectorAll('.heart');
+            hearts.forEach(heart => {
+                heart.addEventListener('click', function() {
+                    this.style.fontSize = '3em';
+                    setTimeout(() => {
+                        this.style.fontSize = '2em';
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
