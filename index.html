@@ -3,137 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Late Girlfriend's Day!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-        }
-        .parallax {
-            background-image: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            height: 100%;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .content {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 50px;
-            text-align: center;
-        }
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4em;
-            color: #ff4d88;
-            margin-bottom: 20px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        p {
-            font-size: 1.2em;
-            color: #333;
-            line-height: 1.6;
-        }
-        .images {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
-        .image-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        }
-        .image-container img {
-            transition: transform 0.5s ease;
-            max-width: 200px;
-        }
-        .image-container:hover img {
-            transform: scale(1.1);
-        }
-        .heart {
-            position: absolute;
-            font-size: 2em;
-            color: #ff4d88;
-            animation: float 3s ease-in-out infinite;
-        }
-        #confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #666;
-        }
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff4d88, 0 0 20px #ff4d88, 0 0 35px #ff4d88, 0 0 40px #ff4d88, 0 0 50px #ff4d88;
-            }
-            to {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff4d88, 0 0 40px #ff4d88, 0 0 70px #ff4d88, 0 0 80px #ff4d88, 0 0 100px #ff4d88;
-            }
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-    </style>
+    <title>Our Love Story</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="parallax"></div>
-    <div class="content">
-        <h1>Happy Late Girlfriend's Day!</h1>
-        <p>When it was Girlfriend's Day, we were talking but not together yet.</p>
-        <p>Now that we are, I want to celebrate you every day!</p>
-        <div class="images">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#our-story">Our Story</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#message">Message</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Happy Late Girlfriend's Day!</h1>
+            <p>To the most amazing girlfriend in the world</p>
+        </section>
+
+        <section id="our-story">
+            <h2>Our Story</h2>
+            <p>When it was Girlfriend's Day, we were talking but not together yet. Now that we are, I want to celebrate you every day!</p>
             <div class="image-container">
-                <img src="https://media.tenor.com/Ql7GsS6mf9cAAAAC/flying-kisses-dave-the-minion.gif" alt="Blushing Minion">
+                <img src="path_to_your_image_together.jpg" alt="Us Together" id="couple-image">
             </div>
-            <div class="image-container">
-                <img src="https://i.pinimg.com/originals/29/c7/3f/29c73f4879f4d5e3345311329f90c4e8.jpg" alt="Flower Minion">
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div class="image-grid">
+                <img src="path_to_her_image1.jpg" alt="Her 1" class="gallery-image">
+                <img src="path_to_her_image2.jpg" alt="Her 2" class="gallery-image">
+                <img src="path_to_her_image3.jpg" alt="Her 3" class="gallery-image">
+                <img src="path_to_her_image4.jpg" alt="Her 4" class="gallery-image">
             </div>
-        </div>
-        <div class="footer">
-            <p>Last edited: August 10, 2024</p>
-        </div>
-    </div>
-    <canvas id="confetti-canvas"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(heart);
+        </section>
 
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }
+        <section id="message">
+            <h2>A Special Message</h2>
+            <p>You're the most wonderful person I've ever met. Every day with you is a blessing, and I'm so grateful to have you in my life.</p>
+            <div class="hearts-container" id="hearts-container"></div>
+        </section>
+    </main>
 
-        setInterval(createHeart, 300);
+    <footer>
+        <p>Created with love | Last updated: August 10, 2024</p>
+    </footer>
 
-        document.addEventListener('click', function(e) {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
