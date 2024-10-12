@@ -4,38 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Late Girlfriend's Day!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #ffe6f2, #ffb3d9);
+        body, html {
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
-        .container {
+        .parallax {
+            background-image: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            height: 100%;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .content {
             background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 20px auto;
+            padding: 50px;
+            text-align: center;
         }
         h1 {
-            font-family: 'Pacifico', cursive;
-            color: #ff66b2;
-            font-size: 3em;
+            font-family: 'Dancing Script', cursive;
+            font-size: 4em;
+            color: #ff4d88;
             margin-bottom: 20px;
-            animation: heartbeat 1.5s ease-in-out infinite;
+            animation: glow 2s ease-in-out infinite alternate;
         }
         p {
-            color: #666;
-            line-height: 1.6;
             font-size: 1.2em;
+            color: #333;
+            line-height: 1.6;
         }
         .images {
             display: flex;
@@ -43,30 +44,45 @@
             gap: 30px;
             margin-top: 30px;
         }
-        img {
-            max-width: 200px;
+        .image-container {
+            position: relative;
+            overflow: hidden;
             border-radius: 15px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         }
-        img:hover {
+        .image-container img {
+            transition: transform 0.5s ease;
+            max-width: 200px;
+        }
+        .image-container:hover img {
             transform: scale(1.1);
         }
         .heart {
+            position: absolute;
             font-size: 2em;
             color: #ff4d88;
             animation: float 3s ease-in-out infinite;
-            margin: 0 10px;
+        }
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
         .footer {
             margin-top: 30px;
             font-size: 0.9em;
-            color: #888;
+            color: #666;
         }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff4d88, 0 0 20px #ff4d88, 0 0 35px #ff4d88, 0 0 40px #ff4d88, 0 0 50px #ff4d88;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff4d88, 0 0 40px #ff4d88, 0 0 70px #ff4d88, 0 0 80px #ff4d88, 0 0 100px #ff4d88;
+            }
         }
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -76,29 +92,46 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="parallax"></div>
+    <div class="content">
         <h1>Happy Late Girlfriend's Day!</h1>
         <p>When it was Girlfriend's Day, we were talking but not together yet.</p>
         <p>Now that we are, I want to celebrate you every day!</p>
-        <p><span class="heart">❤️</span> You're amazing! <span class="heart">❤️</span></p>
         <div class="images">
-            <img src="https://media.tenor.com/Ql7GsS6mf9cAAAAC/flying-kisses-dave-the-minion.gif" alt="Blushing Minion">
-            <img src="https://i.pinimg.com/originals/29/c7/3f/29c73f4879f4d5e3345311329f90c4e8.jpg" alt="Flower Minion">
+            <div class="image-container">
+                <img src="https://media.tenor.com/Ql7GsS6mf9cAAAAC/flying-kisses-dave-the-minion.gif" alt="Blushing Minion">
+            </div>
+            <div class="image-container">
+                <img src="https://i.pinimg.com/originals/29/c7/3f/29c73f4879f4d5e3345311329f90c4e8.jpg" alt="Flower Minion">
+            </div>
         </div>
         <div class="footer">
             <p>Last edited: August 10, 2024</p>
         </div>
     </div>
+    <canvas id="confetti-canvas"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const hearts = document.querySelectorAll('.heart');
-            hearts.forEach(heart => {
-                heart.addEventListener('click', function() {
-                    this.style.fontSize = '3em';
-                    setTimeout(() => {
-                        this.style.fontSize = '2em';
-                    }, 300);
-                });
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+
+        document.addEventListener('click', function(e) {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
             });
         });
     </script>
